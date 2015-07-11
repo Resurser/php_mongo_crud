@@ -26,23 +26,20 @@ $cursor = DB::connect()->allDocument($collection);
         <p><a href="add-post.php" class="btn btn-primary">New Post</a></p>
 
         <table class="table table-bordered table-striped">
-            <?php
-            while ($cursor->hasNext()):
-                $post = $cursor->getNext();
-                ?>
+            <?php foreach($cursor as $post):?>
                 <tr>
                     <td>
                         <?php echo $post['title'];?>
                         <br/>
                         <small><?php echo $post['content'] ?></small>
-                        <?php if(isset($post['comments'])){ echo '('.count($post['comments']).'-comment)';}?>
                     </td>
+                    <td>Comment: <?php if(isset($post['comments'])){ echo count($post['comments']);}else{echo 0;}?></td>
                     <td><a href="view-post.php?id=<?php echo $post['_id'];?>">View</a></td>
                     <td><a href="edit-post.php?id=<?php echo $post['_id'];?>">Edit</a></td>
                     <td><a href="inc/delete-post.php?id=<?php echo $post['_id'];?>">Delete</a></td>
                 </tr>
 
-            <?php endwhile;?>
+            <?php endforeach; ?>
         </table>
     </body>
 </html>

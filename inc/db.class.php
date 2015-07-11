@@ -9,7 +9,6 @@ class DB {
     const DBNAME = 'userstory';
  
     private static $instance;
-    private static $connection;
     private static $database;
 
     public static function connect() {
