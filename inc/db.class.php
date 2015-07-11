@@ -51,6 +51,21 @@ class DB {
         $result = self::$database->$collection->insert($document,array('safe'=>true));
         return $result;
     }
+    public function selectDocument($collection,$id)
+    {
+        $result = self::$database->$collection->findOne(array('_id' => $id));
+        return $result;
+    }
+    public function updateDocument($collection,$id,$document)
+    {
+        $result = self::$database->$collection->update(array('_id' =>$id), $document, array('safe'=>TRUE));
+        return $result;
+    }
+    public function updateMergeDocument($collection,$id,$new_document)
+    {
+        $result = self::$database->$collection->update(array('_id' => $id), array('$push' => array('comments' => $new_document)));
+        return $result;
+    }
     public function deleteDocument($collection,$id)
     {
         $result = self::$database->$collection->remove(array('_id' =>$id), array('safe'=>TRUE));

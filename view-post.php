@@ -2,11 +2,13 @@
 include 'inc/db.class.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
+    $collection = 'posts';
+    $post = DB::connect()->selectDocument($collection,$id);
 
-    $mongo = DB::instantiate();
-    $post_collection = $mongo->get_collection('posts');
-
-    $post = $post_collection->findOne(array('_id' => $id));
+//    $mongo = DB::instantiate();
+//    $post_collection = $mongo->get_collection('posts');
+//
+//    $post = $post_collection->findOne(array('_id' => $id));
 }
 ?>
 
