@@ -5,7 +5,8 @@ if (isset($_GET['id'])) {
     $collection = 'posts';
 
 //    $mongo = DB::instantiate();
-    $post = DB::connect()->selectDocument($collection,$id);
+    $post = new DB();
+    $post = $post->selectDocument($collection,$id);
 //    $post_collection = $mongo->get_collection('posts');
 //
 //    $post = $post_collection->findOne(array('_id' => $id));

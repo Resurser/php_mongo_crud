@@ -15,7 +15,8 @@ if(isset($_POST['update_post'])){
                 'content' => $content,               
             );
 //    $post_id = $post_collection->update(array('_id' =>$id), $post, array('safe'=>TRUE));
-    $result = DB::connect()->updateDocument($collection,$id,$post);
+    $object = new DB();
+    $result = $object->updateDocument($collection,$id,$post);
     header('Location:../dashboard.php');
     }
 }

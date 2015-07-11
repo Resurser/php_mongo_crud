@@ -15,7 +15,8 @@ if(isset($_POST['add_post'])){
                 'created_on' => new MongoDate()
             );
 //    $post_id = $post_collection->insert($post,array('safe'=>true));
-    $result = DB::connect()->insertDocument('posts',$post);
+    $object = new DB();
+    $result = $object->insertDocument('posts',$post);
     header('Location:../dashboard.php');
     }
 }

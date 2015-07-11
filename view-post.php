@@ -3,7 +3,8 @@ include 'inc/db.class.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $collection = 'posts';
-    $post = DB::connect()->selectDocument($collection,$id);
+    $post = new DB();
+    $post = $post->selectDocument($collection,$id);
 
 //    $mongo = DB::instantiate();
 //    $post_collection = $mongo->get_collection('posts');

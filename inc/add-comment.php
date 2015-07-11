@@ -17,7 +17,8 @@ if(isset($_POST['add_comment'])){
                 'created_on' => $date
             );
 //    $post_collection->update(array('_id' => $post_id), array('$push' => array('comments' => $comment)));
-    $result = DB::connect()->updateMergeDocument($collection,$post_id,$comment);
+    $object = new DB();
+    $result = $object->updateMergeDocument($collection,$post_id,$comment);
     header('Location:../view-post.php?id='.$post_id);
 }
 
