@@ -1,17 +1,7 @@
 <?php
 include 'inc/db.class.php';
 $collection = 'posts';
-//$cursor = new DB();
-//$cursor = $cursor->allDocument($collection);
 $cursor = DB::instantiate()->allDocument($collection);
-//$mongo = DB::instantiate();
-//$post_collection = $mongo->get_collection('posts');
-
-//Get all posts
-//$cursor = $post_collection->find();
-
-//cursor can be converted to an associative array
-//$post_array = iterator_to_array($cursor);
 ?>
 
 <!DOCTYPE html>
