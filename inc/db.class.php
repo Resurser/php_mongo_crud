@@ -9,8 +9,9 @@ class DB {
     const DBNAME = 'userstory';
  
     private $database;
+    private static $instance;
 
-    public function __construct() {
+    private function __construct() {
         /**
          * Connection string form server
          * mongodb://<dbuser>:<dbpassword>@ds029821.mongolab.com:29821/userstory
@@ -25,7 +26,14 @@ class DB {
         }
 //        return $this->instance;
     }
-    
+
+    public static function instantiate()
+    {
+        if(!self::$instance){
+            self::$instance = new DB();
+        }
+        return self::$instance;
+    }
 //     static public function instantiate()
 //     {
 //        if(!isset(self::$instance)){

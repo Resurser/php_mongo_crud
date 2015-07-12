@@ -1,8 +1,9 @@
 <?php
 include 'inc/db.class.php';
 $collection = 'posts';
-$cursor = new DB();
-$cursor = $cursor->allDocument($collection);
+//$cursor = new DB();
+//$cursor = $cursor->allDocument($collection);
+$cursor = DB::instantiate()->allDocument($collection);
 //$mongo = DB::instantiate();
 //$post_collection = $mongo->get_collection('posts');
 
