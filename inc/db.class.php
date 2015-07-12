@@ -14,19 +14,20 @@ class DB {
     private function __construct() {
         /**
          * Connection string form server
-         * mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database>
+         * mongodb://<db_user>:<db_password>@<host>:<port>/<database>
          */
         $connection_string = sprintf('mongodb://%s:%s@%s:%d/%s', DB::DBUSER, DB::DBPWD, DB::DBHOST, DB::DBPORT, DB::DBNAME);       
         try {
             $mongo = new MongoClient($connection_string);
-            $this->database = $mongo->selectDB(self::DBNAME);
-//            $this->instance = new DB();
+            $this->database = $mongo->selectDB(DB::DBNAME);
         } catch (MongoConnectionException $e) {
             throw $e;
         }
-//        return $this->instance;
     }
 
+    /**
+     * Self instance function for singleton pattern
+     */
     public static function instantiate()
     {
         if(!self::$instance){

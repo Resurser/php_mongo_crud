@@ -1,15 +1,9 @@
 <?php
 include 'inc/db.class.php';
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_REQUEST['id'])) {
+    $id = $_REQUEST['id'];
     $collection = 'posts';
-    $post = new DB();
-    $post = $post->selectDocument($collection,$id);
-
-//    $mongo = DB::instantiate();
-//    $post_collection = $mongo->get_collection('posts');
-//
-//    $post = $post_collection->findOne(array('_id' => $id));
+    $post = DB::instantiate()->selectDocument($collection,$id);
 }
 ?>
 
